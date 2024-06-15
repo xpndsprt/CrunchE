@@ -1,7 +1,7 @@
 #include <Arduino.h>
 
 #include "LedManager.h"
-LedManager ledManager = LedManager(1, 2, 3, 4);
+LedManager ledManager = LedManager(9, 10, 11, 12);
 
 #include "InputManager.h"
 InputManager inputManager = InputManager();
@@ -22,9 +22,9 @@ char keys[ROWS][COLS] = {
   { 'A', 'B', 'C', 'D' }
 };
 
-byte rowPins[ROWS] = { 11, 10, 9, 8 };     //connect to the row pinouts of the keypad
-byte colPins[COLS] = { 12, 13, 14, 15 };  //connect to the column pinouts of the keypad
-Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, ROWS, COLS);
+byte rowPins[ROWS] = { 4, 3, 8, 15 };     //connect to the row pinouts of the keypad
+byte colPins[COLS] = { 16, 17, 18, 13 };  //connect to the column pinouts of the keypad
+Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, ROWS, COLS); 
 
 float lastMillis;
 char oldChar;
@@ -36,9 +36,9 @@ void setup() {
   lastMillis = millis();
  
   //setup I2S pins
-  I2S.setDataPin(7);
+  I2S.setDataPin(5);
   I2S.setSckPin(6);//blc
-  I2S.setFsPin(5);//lrc
+  I2S.setFsPin(7);//lrc
 
   if (!I2S.begin(I2S_PHILIPS_MODE, sampleRate, 16)) {
     Serial.println("Failed to initialize I2S!");
