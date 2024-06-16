@@ -9,6 +9,7 @@ Crunch-E is a keychain form factor music-making platform that is both limited an
 	Arduino Compatible Keypad
 	4 LEDs + Required Resistors
 
+![alt text](https://raw.githubusercontent.com/xpndsprt/CrunchE/main/InstB.png)<br><p>
 **CrunchOS Usage Instructions:**
 
 
