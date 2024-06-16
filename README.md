@@ -20,6 +20,7 @@ Crunch-e is a sampler/tracker inspired by the Mod trackers of the 90s. It's easi
 
 Once the function button is pressed, it will light up the LED associated with that button. While the LED is lit (not blinking), you can make your function selection (like change tracks, volume, instrument, etc).
 
+![alt text](https://github.com/xpndsprt/CrunchE/blob/main/InstA.png?raw=true)<br>
 **New Song**
 
 
