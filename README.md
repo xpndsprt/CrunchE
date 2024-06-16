@@ -54,7 +54,7 @@ Press F2, then press any of the function buttons to change the volume. Press F2,
 **Changing Tracks**
 
 
-Press F3, then press any of the function buttons to change tracks. You might want to record drums on track one, bass on track two, etc. Remember, only one note per track can be played at a time, so for concurrent sounds, you need to record them on separate tracks.
+Press F3, then press any of the function buttons to change tracks. You might want to record drums on track one, bass on track two, etc. Remember, only one voice per track can be played at a time, so for concurrent sounds, you need to record them on separate tracks.
 
 **Clearing Track**
 
