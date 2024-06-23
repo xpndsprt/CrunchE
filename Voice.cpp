@@ -31,18 +31,18 @@
 //instruments
 
 #include "Samples/bass1.h"
-#include "Samples/bass2.h"
+#include "Samples/jbass2.h"
 #include "Samples/pad1.h"
-#include "Samples/pad2.h"
+#include "Samples/jpad1.h"
 #include "Samples/pad3.h"
 #include "Samples/bongo1.h"
 #include "Samples/synth2.h"
-#include "Samples/guitar1.h"
-#include "Samples/pureSin.h"
-#include "Samples/synth3.h"
+#include "Samples/jlead2.h"
+#include "Samples/jlead1.h"
+#include "Samples/jbass1.h"
 
 Voice::Voice() {
-  octave = 1;
+  octave = 0;
   envelopeLength = 60000;
   volume = 1;
   voiceNum = 0;
@@ -67,7 +67,7 @@ int Voice::UpdateVoice() {
     sample *= 2;
   }
 
-  
+
   if (arpNum == 2) {
     UpdateHistory(sample);
     sample = 0;
@@ -76,7 +76,7 @@ int Voice::UpdateVoice() {
     }
     sample /= 2;
   }
- if (arpNum == 1) {
+  if (arpNum == 1) {
     UpdateHistory(sample);
     sample = 0;
     for (int i = 0; i < 8; i++) {
@@ -89,9 +89,9 @@ int Voice::UpdateVoice() {
     UpdateHistory(sample);
     int rSample = 0;
     for (int i = 2; i < 6; i++) {
-      rSample += GetHistorySample(i * 300)/(i/3+1);
+      rSample += GetHistorySample(i * 300) / (i / 3 + 1);
     }
-   
+
     sample = rSample;
   }
   return sample;
@@ -115,20 +115,20 @@ int Voice::ReadWaveform() {
       sample = bass1[(int)sampleIndex];
       break;
     case 3:
-      sampleLen = bass2Length;
-      sample = bass2[(int)sampleIndex]*0.5;
+      sampleLen = jbass2Length;
+      sample = jbass2[(int)sampleIndex];
       break;
     case 4:
       sampleLen = pad1Length;
       sample = pad1[(int)sampleIndex];
       break;
     case 5:
-      sampleLen = pad2Length;
-      sample = pad2[(int)sampleIndex];
+      sampleLen = jpad1Length;
+      sample = jpad1[(int)sampleIndex];
       break;
     case 6:
       sampleLen = pad3Length;
-      sample = pad3[(int)sampleIndex]*.8;
+      sample = pad3[(int)sampleIndex];
       break;
     case 7:
       sampleLen = bongo1Length;
@@ -136,19 +136,19 @@ int Voice::ReadWaveform() {
       break;
     case 8:
       sampleLen = synth2Length;
-      sample = synth2[(int)sampleIndex] * .9;
+      sample = synth2[(int)sampleIndex];
       break;
     case 9:
-      sampleLen = pureSinLength;
-      sample = pureSin[(int)sampleIndex] * .3;
+      sampleLen = jbass1Length;
+      sample = jbass1[(int)sampleIndex]*0.8;
       break;
     case 10:
-      sampleLen = synth3Length;
-      sample = synth3[(int)sampleIndex] * .6;
+      sampleLen = jlead1Length;
+      sample = jlead1[(int)sampleIndex]*0.8;
       break;
     case 11:
-      sampleLen = guitar1Length;
-      sample = guitar1[(int)sampleIndex];
+      sampleLen = jlead2Length;
+      sample = jlead2[(int)sampleIndex];
       break;
   }
 
