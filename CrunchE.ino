@@ -34,7 +34,7 @@ const int sampleRate = 22000;  // sample rate in Hz
 
 void setup() {
   lastMillis = millis();
- 
+
   //setup I2S pins
   I2S.setDataPin(7);
   I2S.setSckPin(6);//blc
@@ -42,10 +42,9 @@ void setup() {
 
   if (!I2S.begin(I2S_PHILIPS_MODE, sampleRate, 16)) {
     Serial.println("Failed to initialize I2S!");
-    while (1) ;
-     
+    while (1)
+      ;
   }
-
 }
 
 void loop() {
@@ -64,8 +63,18 @@ void loop() {
   }
 
   int sample = tracker.UpdateTracker();
-  sample /= 5;
- 
+  //loundness 
+  if (abs(sample) > 4000) {
+    int rem = abs(sample) - 4000;
+    if (sample > 0) {
+      sample = 4000 + (rem / 2);
+    } else {
+      sample = -4000 - (rem / 2);
+    }
+  }
+  sample /= 4;
+
+
   I2S.write(sample);
   I2S.write(sample);
 
@@ -73,8 +82,7 @@ void loop() {
   if (tempoBlink > 0)
     ledManager.SetLit(tempoBlink, tracker.selectedTrack);
 
-  ledManager.SetPattern(tracker.allPatternPlay,tracker.currentPattern);
+  ledManager.SetPattern(tracker.allPatternPlay, tracker.currentPattern);
   ledManager.UpdateLed();
   inputManager.EndFrame();
 }
-

@@ -136,7 +136,7 @@ int Voice::ReadWaveform() {
       break;
     case 8:
       sampleLen = synth2Length;
-      sample = synth2[(int)sampleIndex];
+      sample = synth2[(int)sampleIndex]*1.2;
       break;
     case 9:
       sampleLen = jbass1Length;
