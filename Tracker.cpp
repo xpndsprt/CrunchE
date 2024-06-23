@@ -268,7 +268,7 @@ void Tracker::ClearAll(int val) {
     voices[j].SetArpNum(0);
     voices[j].SetEnvelopeNum(0);
     voices[j].SetVolume(1);
-    voices[j].SetOctave(1);
+    voices[j].SetOctave(0);
   }
   patternLength = 32 + (32 * val);
 };
